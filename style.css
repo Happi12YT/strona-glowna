@@ -60,6 +60,12 @@ body {
   transition: width 0.4s ease, height 0.4s ease,
               padding 0.4s ease, border-radius 0.4s ease;
 }
+.menu-container {
+  position: fixed;
+  top: 15px;
+  right: 30px;
+  ...
+}
 .menu-container.active {
   width: 180px;
   height: auto;
