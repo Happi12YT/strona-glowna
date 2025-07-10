@@ -85,6 +85,10 @@ body {
   border-radius: 2px;
 }
 
+/* Znikanie hamburgera, gdy menu aktywne */
+.menu-container.active .menu-button {
+  display: none;
+}
 /* MENU PANEL */
 .menu-panel {
   display: none;
