@@ -10,28 +10,29 @@
 <body>
   <header class="hero">
     <nav class="navbar">
+  <d<nav class="navbar">
   <div class="logo-box">
     <img src="logo.png" alt="Logo Happi12" />
     <span>Happi12</span>
   </div>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
   <ul class="menu" id="menu">
     <li><a href="#start">Start</a></li>
     <li><a href="#filmy">Filmy</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
-    </nav>
-    <div class="hero-content">
-      <h1>Witajcie na mojej stronie internetowej!</h1>
-      <p>Nazywam się <strong>Happi12</strong> i codziennie publikuję odcinki na YouTube — o godzinie 22:00 w wakacje lub o 20:00 w roku szkolnym.</p>
-      <p>Strona będzie centralnym miejscem z moimi najnowszymi filmami, projektami i ciekawostkami!</p>
-    </div>
-  </header>
+</nav>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
-    }
-  </script>
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('show');
+  }
+</script>
 </body>
 </html>
