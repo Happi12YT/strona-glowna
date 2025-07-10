@@ -8,25 +8,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- Przyklejony pasek -->
+  <!-- Pasek nawigacyjny -->
   <nav class="navbar">
     <div class="logo-box">
-      <img src="logo.png" alt="Logo" />
+      <img src="logo.png" alt="Logo Happi12" />
       <span>Happi12</span>
     </div>
-
-    <div class="menu-container" id="menuContainer">
-      <div class="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="menu-expanded">
-        <div class="close" onclick="toggleMenu()">×</div>
-        <ul>
-          <li><a href="#start">Start</a></li>
-          <li><a href="#wakacje">Wakacje</a></li>
-          <li><a href="#kontakt">Kontakt</a></li>
-        </ul>
-      </div>
+    <div class="menu-button" onclick="toggleMenu()" id="menuButton">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="menu-panel" id="menuPanel">
+      <div class="close" onclick="toggleMenu()">×</div>
+      <ul>
+        <li><a href="#start">Start</a></li>
+        <li><a href="#wakacje">Wakacje</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
     </div>
   </nav>
 
@@ -43,7 +40,7 @@
     <button onclick="scrollToTimer()">Zobacz tutaj</button>
   </section>
 
-  <!-- Przyklejony licznik -->
+  <!-- Licznik przyklejony -->
   <div class="countdown-box">
     <p>Do następnego odcinka zostało:</p>
     <div id="countdown"></div>
@@ -61,21 +58,24 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById('menuContainer').classList.toggle('active');
+      document.getElementById("menuPanel").classList.toggle("active");
+      document.getElementById("menuButton").classList.toggle("hidden");
     }
+
     function scrollToTimer() {
       document.querySelector('.countdown-box').scrollIntoView({ behavior: "smooth" });
     }
+
     function updateCountdown() {
       const now = new Date();
       const target = new Date();
-      target.setHours(22,0,0,0);
-      if (now > target) target.setDate(target.getDate()+1);
+      target.setHours(22, 0, 0, 0);
+      if (now > target) target.setDate(target.getDate() + 1);
       const diff = target - now;
-      const hrs = Math.floor(diff/1000/60/60);
-      const mins = Math.floor((diff/1000/60)%60);
-      const secs = Math.floor((diff/1000)%60);
-      document.getElementById('countdown').textContent = `${hrs}h ${mins}m ${secs}s`;
+      const hrs = Math.floor(diff / 1000 / 60 / 60);
+      const mins = Math.floor((diff / 1000 / 60) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").textContent = `${hrs}h ${mins}m ${secs}s`;
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
