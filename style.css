@@ -1,19 +1,22 @@
+/* style.css */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #f8faff;
+  font-family: system-ui, sans-serif;
+  background: #f8faff;
   color: #333;
   overflow-x: hidden;
 }
 
-/* Pasek nawigacyjny */
+/* NAVBAR */
 .navbar {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   padding: 15px 30px;
   display: flex;
@@ -23,7 +26,7 @@ body {
   z-index: 1000;
 }
 
-/* Logo + nazwa */
+/* LOGO */
 .logo-box {
   display: flex;
   align-items: center;
@@ -44,21 +47,36 @@ body {
   color: #0077cc;
 }
 
-/* Hamburger */
-.menu-button {
+/* MENU CONTAINER */
+.menu-container {
+  position: relative;
   width: 50px;
   height: 50px;
   background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
   border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: width 0.4s ease, height 0.4s ease,
+              padding 0.4s ease, border-radius 0.4s ease;
+}
+.menu-container.active {
+  width: 180px;
+  height: auto;
+  padding: 15px;
+  border-radius: 16px;
+}
+
+/* HAMBURGER */
+.menu-button {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: opacity 0.3s ease;
 }
-.menu-button.hidden { opacity: 0; pointer-events: none; }
 .menu-button span {
   width: 26px;
   height: 3px;
@@ -67,38 +85,27 @@ body {
   border-radius: 2px;
 }
 
-/* Rozwijane menu */
+/* MENU PANEL */
 .menu-panel {
-  position: fixed;
-  top: 15px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background: rgba(255,255,255,0.95);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  transition: width 0.4s ease, height 0.4s ease;
-  z-index: 1001;
+  display: none;
 }
-.menu-panel.active {
-  width: 180px;
-  height: auto;
-  padding: 15px;
-  border-radius: 16px;
+.menu-container.active .menu-panel {
+  display: block;
 }
 
-/* Przycisk X */
+/* CLOSE BUTTON */
 .menu-panel .close {
   font-size: 24px;
   color: #0077cc;
   cursor: pointer;
   text-align: right;
 }
+
+/* MENU LINKS */
 .menu-panel ul {
   list-style: none;
-  padding: 0;
   margin-top: 10px;
+  padding: 0;
 }
 .menu-panel ul li {
   margin: 10px 0;
@@ -116,9 +123,10 @@ body {
   background: rgba(0,119,204,0.1);
 }
 
-/* Sekcja powitalna z tłem */
+/* HERO */
 .hero {
-  background: url('https://happi12yt.github.io/strona-glowna/t%C5%82o-trawa-cartoon.png') no-repeat center center/cover;
+  background: url('https://happi12yt.github.io/strona-glowna/t%C5%82o-trawa-cartoon.png')
+    no-repeat center center/cover;
   height: 100vh;
   padding-top: 160px;
   text-align: center;
@@ -135,7 +143,7 @@ body {
   margin: 0 auto;
 }
 
-/* Wakacje */
+/* SEKCJA WAKACYJNA */
 .summer {
   padding: 80px 30px;
   background: linear-gradient(to bottom, #ffffff, #e3f3ff);
@@ -158,12 +166,13 @@ body {
   border-radius: 12px;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background 0.3s;
 }
 .summer button:hover {
   background: #005fa3;
 }
 
-/* Licznik */
+/* COUNTDOWN */
 .countdown-box {
   position: fixed;
   bottom: 20px;
@@ -171,4 +180,34 @@ body {
   background: rgba(255,255,255,0.95);
   padding: 12px 20px;
   border-radius: 16px;
-  box-shadow: 0[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/P1X3L0V4/notes/tree/3f7c6452ebdd5aabf8bb34f4b64fccd528f8ab56/%23KURSY%2FReact_OdPodstaw_Udemy.md?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "1")[43dcd9a7-70db-4a1f-b0ae-981daa162054](https://github.com/fe-li/mobilnifizjoterapeuci/tree/3ed82ccf148dba08e40585b472737108d3cc709a/index.php?citationMarker=43dcd9a7-70db-4a1f-b0ae-981daa162054 "2")
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  font-weight: 700;
+  font-size: 16px;
+  z-index: 1000;
+}
+
+/* FOOTER */
+.footer {
+  background: #f0f4f8;
+  padding: 40px 20px;
+  text-align: center;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+.footer a {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+.footer a:hover {
+  color: #005fa3;
+}
+.footer p {
+  font-size: 14px;
+  color: #555;
+}
