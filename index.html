@@ -3,36 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happi12 - Oficjalna Strona</title>
+  <title>Happi12 - Strona Główna</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <header class="hero">
-    <nav class="navbar">
-  <d<nav class="navbar">
-  <div class="logo-box">
-    <img src="logo.png" alt="Logo Happi12" />
-    <span>Happi12</span>
+  <!-- Pasek nawigacyjny -->
+  <nav class="navbar">
+    <div class="logo-box">
+      <img src="logo.png" alt="Logo" />
+      <span>Happi12</span>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="menu" id="menu">
+      <li><a href="#start">Start</a></li>
+      <li><a href="#wakacje">Wakacje</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sekcja powitalna -->
+  <header class="hero" id="start">
+    <h1>Witajcie na mojej stronie internetowej!</h1>
+    <p>Jestem <strong>Happi12</strong> i codziennie publikuję odcinki na YouTube — o 22:00 w wakacje, o 20:00 w roku szkolnym.</p>
+  </header>
+
+  <!-- Sekcja wakacyjna -->
+  <section class="summer" id="wakacje">
+    <h2>Mamy wakacje! 😎</h2>
+    <p>Zobaczcie ile zostało do końca wakacji i kiedy odpalam live!</p>
+    <button onclick="scrollToTimer()">Zobacz tutaj</button>
+  </section>
+
+  <!-- Ramka z timerem -->
+  <div class="countdown-box">
+    <p>Do następnego odcinka zostało:</p>
+    <div id="countdown"></div>
   </div>
 
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
+  <!-- Dolne menu -->
+  <footer class="footer" id="kontakt">
+    <div class="footer-links">
+      <a href="#">Kontakt</a>
+      <a href="#">Discord</a>
+      <a href="#">YouTube</a>
+    </div>
+    <p>© 2025 Happi12</p>
+  </footer>
 
-  <ul class="menu" id="menu">
-    <li><a href="#start">Start</a></li>
-    <li><a href="#filmy">Filmy</a></li>
-    <li><a href="#kontakt">Kontakt</a></li>
-  </ul>
-</nav>
+  <script>
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('show');
+    }
 
-<script>
-  function toggleMenu() {
-    document.getElementById('menu').classList.toggle('show');
-  }
-</script>
+    function scrollToTimer() {
+      document.querySelector('.countdown-box').scrollIntoView({ behavior: "smooth" });
+    }
+
+    // Timer do 22:00
+    function updateCountdown() {
+      const now = new Date();
+      const target = new Date();
+      target.setHours(22, 0, 0, 0);
+      if (now > target) target.setDate(target.getDate() + 1);
+      const diff = target - now;
+
+      const hrs = Math.floor(diff / 1000 / 60 / 60);
+      const mins = Math.floor((diff / 1000 / 60) % 60);
+      const secs = Math.floor((diff / 1000) % 60);
+      document.getElementById("countdown").textContent = `${hrs}h ${mins}m ${secs}s`;
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
 </body>
 </html>
