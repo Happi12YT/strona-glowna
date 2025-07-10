@@ -1,4 +1,4 @@
-/* style.css — edycja z lipca 2025 */
+/* style.css */
 
 body {
   margin: 0;
@@ -7,109 +7,119 @@ body {
   color: #333;
 }
 
-/* Kontener nagłówka */
+/* NAVBAR – transparentny, absolutnie pozycjonowany nad sekcją hero */
 .navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  position: relative;
-  z-index: 10;
-  background: none; 
+  background: transparent;
+  z-index: 1000;
 }
 
+/* Logo + nazwa w zaokrąglonym prostokącie z lekkim blur’em */
 .logo-box {
   display: flex;
   align-items: center;
   padding: 8px 20px;
-  background-color: white;
+  background-color: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
   border-radius: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
-
 .logo-box img {
   height: 50px;
-  margin-right: 15px;
-  border-radius: 8px;
+  margin-right: 12px;
+  border-radius: 6px;
 }
-
 .logo-box span {
   font-size: 18px;
   font-weight: 600;
   color: #0077cc;
 }
 
+/* Hamburger w kółeczku – widoczny zawsze */
 .hamburger {
-  font-size: 24px;
-  cursor: pointer;
-  padding: 12px;
-  border-radius: 50%;
-  border: 2px solid #0077cc;
-  background-color: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease-in-out;
-  position: absolute;
-  right: 30px;
-  top: 20px;
-}
-
-.hamburger:hover {
-  transform: scale(1.05) translateY(2px);
-}
-
-.menu {
-  list-style: none;
+  width: 45px;
+  height: 45px;
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: rgba(255,255,255,0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hamburger:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.hamburger span {
+  width: 20px;
+  height: 2px;
+  background-color: #0077cc;
+  margin: 3px 0;
+  transition: background-color 0.3s ease;
+}
+
+/* MENU – ukryte, rozwija się w zaokrąglonej ramce */
+.menu {
   position: absolute;
   top: 80px;
   right: 30px;
-  background-color: #fff;
+  display: none;
+  flex-direction: column;
+  background-color: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
   padding: 20px;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  display: none;
+  z-index: 1000;
 }
-
 .menu.show {
   display: flex;
   animation: floatMenu 1.5s ease-in-out infinite alternate;
 }
-
 .menu a {
   text-decoration: none;
   font-weight: 600;
   color: #0077cc;
   margin: 8px 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-
 .menu a:hover {
+  background-color: rgba(0,119,204,0.1);
   color: #005999;
 }
 
-/* Animacja menu */
+/* Animacja „pływającego” menu */
 @keyframes floatMenu {
-  0% {
-    transform: translateY(0px);
-  }
-  100% {
-    transform: translateY(4px);
-  }
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
 }
 
-/* Sekcja hero powitalna */
+/* SEKCJA HERO */
 .hero {
   background: url('tlo.png') no-repeat center center/cover;
-  padding: 120px 40px;
+  height: 100vh;
+  padding-top: 100px;
   color: white;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.6);
   text-align: center;
 }
-
 .hero h1 {
   font-size: 42px;
   margin-bottom: 15px;
 }
-
 .hero p {
   font-size: 20px;
   max-width: 600px;
