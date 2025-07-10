@@ -1,4 +1,5 @@
-/* styles.css */
+/* style.css */
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -14,6 +15,7 @@ body {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
   position: relative;
+  z-index: 10;
 }
 
 .logo img {
@@ -21,12 +23,27 @@ body {
   border-radius: 10px;
 }
 
+/* Styl i animacja przycisku ☰ */
 .hamburger {
   font-size: 28px;
   cursor: pointer;
-  display: none;
+  padding: 10px;
+  border: 2px solid #0077cc;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+  position: absolute;
+  right: 30px;
+  top: 15px;
 }
 
+.hamburger:hover {
+  transform: translateY(2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Menu (lista linków) */
 .menu {
   list-style: none;
   display: flex;
@@ -40,15 +57,13 @@ body {
   color: #0077cc;
   transition: color 0.3s ease;
 }
+
 .menu a:hover {
   color: #005999;
 }
 
-/* Małe ekrany */
+/* Mobilne urządzenia */
 @media (max-width: 768px) {
-  .hamburger {
-    display: block;
-  }
   .menu {
     flex-direction: column;
     position: absolute;
@@ -56,26 +71,28 @@ body {
     right: 30px;
     background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     display: none;
-    transform: scale(0.95);
   }
+
   .menu.show {
     display: flex;
-    animation: floatMenu 1.5s ease infinite alternate;
+    animation: floatMenu 1.5s ease-in-out infinite alternate;
   }
 }
 
-/* Animacja "pływającego" menu */
+/* Animacja pływającego menu */
 @keyframes floatMenu {
   0% {
     transform: translateY(0px);
   }
   100% {
-    transform: translateY(4px);
+    transform: translateY(3px);
   }
 }
 
+/* Sekcja powitalna (hero) */
 .hero {
   background: url('tlo.png') no-repeat center center/cover;
   padding: 120px 40px;
