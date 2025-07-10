@@ -4,50 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happi12 - Strona Główna</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <!-- przyklejony navbar -->
+  <!-- Przyklejony pasek -->
   <nav class="navbar">
     <div class="logo-box">
-      <img src="logo.png" alt="Logo Happi12"/>
+      <img src="logo.png" alt="Logo" />
       <span>Happi12</span>
     </div>
-    <!-- panel hamburgera + menu -->
-    <div class="menu-panel" id="menuPanel">
+
+    <div class="menu-container" id="menuContainer">
       <div class="hamburger" onclick="toggleMenu()">
         <span></span><span></span><span></span>
       </div>
-      <div class="close-btn" onclick="toggleMenu()">×</div>
-      <ul class="menu-links">
-        <li><a href="#start">Start</a></li>
-        <li><a href="#wakacje">Wakacje</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-      </ul>
+      <div class="menu-expanded">
+        <div class="close" onclick="toggleMenu()">×</div>
+        <ul>
+          <li><a href="#start">Start</a></li>
+          <li><a href="#wakacje">Wakacje</a></li>
+          <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!-- hero pełny ekran -->
+  <!-- Sekcja powitalna -->
   <header class="hero" id="start">
     <h1>Witajcie na mojej stronie internetowej!</h1>
     <p>Jestem <strong>Happi12</strong> i codziennie publikuję odcinki na YouTube — o 22:00 w wakacje, o 20:00 w roku szkolnym.</p>
   </header>
 
-  <!-- sekcja wakacyjna -->
+  <!-- Sekcja wakacyjna -->
   <section class="summer" id="wakacje">
     <h2>Mamy wakacje! 😎</h2>
     <p>Zobaczcie ile zostało do końca wakacji i kiedy odpalam live!</p>
     <button onclick="scrollToTimer()">Zobacz tutaj</button>
   </section>
 
-  <!-- przyklejony licznik w rogu -->
+  <!-- Przyklejony licznik -->
   <div class="countdown-box">
     <p>Do następnego odcinka zostało:</p>
     <div id="countdown"></div>
   </div>
 
-  <!-- stopka -->
+  <!-- Stopka -->
   <footer class="footer" id="kontakt">
     <div class="footer-links">
       <a href="#">Kontakt</a>
@@ -59,13 +61,11 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById('menuPanel').classList.toggle('open');
+      document.getElementById('menuContainer').classList.toggle('active');
     }
     function scrollToTimer() {
-      document.querySelector('.countdown-box').scrollIntoView({ behavior: 'smooth' });
+      document.querySelector('.countdown-box').scrollIntoView({ behavior: "smooth" });
     }
-
-    // odliczanie do 22:00
     function updateCountdown() {
       const now = new Date();
       const target = new Date();
