@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css — edycja z lipca 2025 */
 
 body {
   margin: 0;
@@ -7,92 +7,96 @@ body {
   color: #333;
 }
 
+/* Kontener nagłówka */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 30px;
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
   position: relative;
   z-index: 10;
+  background: none; 
 }
 
-.logo img {
-  height: 60px;
-  border-radius: 10px;
-}
-
-/* Styl i animacja przycisku ☰ */
-.hamburger {
-  font-size: 28px;
-  cursor: pointer;
-  padding: 10px;
-  border: 2px solid #0077cc;
-  border-radius: 10px;
+.logo-box {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
   background-color: white;
+  border-radius: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.logo-box img {
+  height: 50px;
+  margin-right: 15px;
+  border-radius: 8px;
+}
+
+.logo-box span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0077cc;
+}
+
+.hamburger {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 12px;
+  border-radius: 50%;
+  border: 2px solid #0077cc;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out;
   position: absolute;
   right: 30px;
-  top: 15px;
+  top: 20px;
 }
 
 .hamburger:hover {
-  transform: translateY(2px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  transform: scale(1.05) translateY(2px);
 }
 
-/* Menu (lista linków) */
 .menu {
   list-style: none;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  right: 30px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: none;
+}
+
+.menu.show {
   display: flex;
-  gap: 20px;
-  transition: transform 0.3s ease-in-out;
+  animation: floatMenu 1.5s ease-in-out infinite alternate;
 }
 
 .menu a {
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 600;
   color: #0077cc;
-  transition: color 0.3s ease;
+  margin: 8px 0;
 }
 
 .menu a:hover {
   color: #005999;
 }
 
-/* Mobilne urządzenia */
-@media (max-width: 768px) {
-  .menu {
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    right: 30px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-    display: none;
-  }
-
-  .menu.show {
-    display: flex;
-    animation: floatMenu 1.5s ease-in-out infinite alternate;
-  }
-}
-
-/* Animacja pływającego menu */
+/* Animacja menu */
 @keyframes floatMenu {
   0% {
     transform: translateY(0px);
   }
   100% {
-    transform: translateY(3px);
+    transform: translateY(4px);
   }
 }
 
-/* Sekcja powitalna (hero) */
+/* Sekcja hero powitalna */
 .hero {
   background: url('tlo.png') no-repeat center center/cover;
   padding: 120px 40px;
