@@ -2,50 +2,52 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happi12 - Strona Główna</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"/>
 </head>
 <body>
-  <!-- Pasek nawigacyjny -->
+  <!-- przyklejony navbar -->
   <nav class="navbar">
     <div class="logo-box">
-      <img src="logo.png" alt="Logo" />
+      <img src="logo.png" alt="Logo Happi12"/>
       <span>Happi12</span>
     </div>
-
-    <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
+    <!-- panel hamburgera + menu -->
+    <div class="menu-panel" id="menuPanel">
+      <div class="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="close-btn" onclick="toggleMenu()">×</div>
+      <ul class="menu-links">
+        <li><a href="#start">Start</a></li>
+        <li><a href="#wakacje">Wakacje</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
     </div>
-
-    <ul class="menu" id="menu">
-      <li><a href="#start">Start</a></li>
-      <li><a href="#wakacje">Wakacje</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
-    </ul>
   </nav>
 
-  <!-- Sekcja powitalna -->
+  <!-- hero pełny ekran -->
   <header class="hero" id="start">
     <h1>Witajcie na mojej stronie internetowej!</h1>
     <p>Jestem <strong>Happi12</strong> i codziennie publikuję odcinki na YouTube — o 22:00 w wakacje, o 20:00 w roku szkolnym.</p>
   </header>
 
-  <!-- Sekcja wakacyjna -->
+  <!-- sekcja wakacyjna -->
   <section class="summer" id="wakacje">
     <h2>Mamy wakacje! 😎</h2>
     <p>Zobaczcie ile zostało do końca wakacji i kiedy odpalam live!</p>
     <button onclick="scrollToTimer()">Zobacz tutaj</button>
   </section>
 
-  <!-- Ramka z timerem -->
+  <!-- przyklejony licznik w rogu -->
   <div class="countdown-box">
     <p>Do następnego odcinka zostało:</p>
     <div id="countdown"></div>
   </div>
 
-  <!-- Dolne menu -->
+  <!-- stopka -->
   <footer class="footer" id="kontakt">
     <div class="footer-links">
       <a href="#">Kontakt</a>
@@ -57,25 +59,23 @@
 
   <script>
     function toggleMenu() {
-      document.getElementById('menu').classList.toggle('show');
+      document.getElementById('menuPanel').classList.toggle('open');
     }
-
     function scrollToTimer() {
-      document.querySelector('.countdown-box').scrollIntoView({ behavior: "smooth" });
+      document.querySelector('.countdown-box').scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Timer do 22:00
+    // odliczanie do 22:00
     function updateCountdown() {
       const now = new Date();
       const target = new Date();
-      target.setHours(22, 0, 0, 0);
-      if (now > target) target.setDate(target.getDate() + 1);
+      target.setHours(22,0,0,0);
+      if (now > target) target.setDate(target.getDate()+1);
       const diff = target - now;
-
-      const hrs = Math.floor(diff / 1000 / 60 / 60);
-      const mins = Math.floor((diff / 1000 / 60) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
-      document.getElementById("countdown").textContent = `${hrs}h ${mins}m ${secs}s`;
+      const hrs = Math.floor(diff/1000/60/60);
+      const mins = Math.floor((diff/1000/60)%60);
+      const secs = Math.floor((diff/1000)%60);
+      document.getElementById('countdown').textContent = `${hrs}h ${mins}m ${secs}s`;
     }
     setInterval(updateCountdown, 1000);
     updateCountdown();
