@@ -1,12 +1,8 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* styles.css */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fdfdfd;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f8faff;
   color: #333;
 }
 
@@ -14,39 +10,87 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #9cdbf1;
   padding: 15px 30px;
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  position: relative;
 }
 
-.logo-container {
-  display: flex;
-  align-items: center;
+.logo img {
+  height: 60px;
+  border-radius: 10px;
 }
 
-.logo {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  margin-right: 10px;
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  display: none;
 }
 
-.brand-name {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.nav-links {
+.menu {
   list-style: none;
   display: flex;
   gap: 20px;
+  transition: transform 0.3s ease-in-out;
 }
 
-.nav-links a {
+.menu a {
   text-decoration: none;
-  color: #222;
-  font-weight: 500;
+  font-weight: 700;
+  color: #0077cc;
+  transition: color 0.3s ease;
+}
+.menu a:hover {
+  color: #005999;
 }
 
-.nav-links a:hover {
-  color: #0077b6;
+/* Małe ekrany */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+  .menu {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    transform: scale(0.95);
+  }
+  .menu.show {
+    display: flex;
+    animation: floatMenu 1.5s ease infinite alternate;
+  }
+}
+
+/* Animacja "pływającego" menu */
+@keyframes floatMenu {
+  0% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(4px);
+  }
+}
+
+.hero {
+  background: url('tlo.png') no-repeat center center/cover;
+  padding: 120px 40px;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto;
 }
